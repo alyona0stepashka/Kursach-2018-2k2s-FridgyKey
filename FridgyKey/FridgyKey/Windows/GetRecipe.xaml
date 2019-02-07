@@ -1,0 +1,158 @@
+﻿<Window x:Class="FridgyKey.Windows.GetRecipe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FridgyKey.Windows"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Get recipe" StateChanged="Window_StateChanged"  WindowStartupLocation="CenterScreen" Style="{StaticResource TitleStyle}">
+
+    <Grid Width="972">
+
+        <DockPanel>
+            <Canvas Background="#4B4A43">
+
+                <Border Background="#696969" Height="544" Width="466" Canvas.Left="492" Canvas.Top="38">
+
+                    <!--<DockPanel Background="#464646" Height="103" Width="433" Margin="0,4,0,1">
+                                    <Image x:Name="icon_r1" Width="90" Height="90" Margin="8,0,279,0"/>
+                                    <Label x:Name="text_r1" Foreground="#F3F3F3" Margin="-270,6,0,7.2" Width="311" FontSize="30" />
+                                </DockPanel>-->
+
+                    <ListBox SelectionChanged="list_recipe_Selected" x:Name="list_recipe" Background="#464646" Foreground="#F3F3F3" BorderBrush="#00ABADB3" Margin="10" FontSize="28" FontFamily="Nautilus Pompilius"/>
+
+
+                </Border>
+                <Border Background="#FCEFDF" Canvas.Left="70" Canvas.Top="38" Height="544" Width="402"/>
+                <Image x:Name="panda_im" gif:ImageBehavior.AnimatedSource="/FridgyKey;component/images/test/16.gif" Canvas.Left="130" Canvas.Top="330" Height="243" Width="302" />
+
+                <Label Background="#FFFEF2E6" Height="27" Canvas.Left="220" Canvas.Top="546" Width="111"/>
+
+
+                <TextBox IsReadOnly="True" x:Name="hack_text" Text="Положите в бокал вина несколько замороженных виноградинок. Напиток станет холодным, но не разбавленным." 
+                         TextWrapping="Wrap" AcceptsReturn="True" FontSize="24" FontFamily="Scotch(FONT BY LYAJKA)" Background="PapayaWhip" Foreground="#313937" Height="282" VerticalAlignment="Center" Width="382" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Auto" Canvas.Left="81" Canvas.Top="48"/>
+
+
+
+                <Image  MouseLeftButtonDown="Image_MouseLeftButtonDown_2" Source="/FridgyKey;component/images/icons/ref.png" Width="33" Height="29" Canvas.Left="159" Canvas.Top="7"/>
+
+
+
+                <!--Menu-->
+                <StackPanel  Style="{StaticResource MenuEvent}">
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label1"
+                               FontFamily="Nautilus Pompilius"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="Label1_MouseLeftButtonDown" 
+                               Content="My fridge" 
+                               FontSize="30" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/home.png" Width="35" Height="35" />
+                    </DockPanel>
+                    <Separator Margin="13,2,53.6,2"></Separator>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label2"  
+                               FontFamily="PG Isadora Cyr Pro" 
+                               MouseLeftButtonDown="label2_MouseLeftButtonDown"
+                               MouseEnter="label2_MouseMove"
+                               MouseLeave="label2_MouseLeave"
+                               Content="Get recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/get_recipe.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label3"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label3_MouseLeftButtonDown" 
+                               MouseEnter="label3_MouseMove"
+                               MouseLeave="label3_MouseLeave"
+                               Content="Add product" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/add.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label4"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label4_MouseLeftButtonDown" 
+                               MouseEnter="label4_MouseMove"
+                               MouseLeave="label4_MouseLeave"
+                               Content="Add recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/add.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label5"  
+                               FontFamily="PG Isadora Cyr Pro" 
+                               MouseLeftButtonDown="label5_MouseLeftButtonDown"
+                               MouseEnter="label5_MouseMove"
+                               MouseLeave="label5_MouseLeave"
+                               Content="Calculate kkal" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/calculate.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label6"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label6_MouseLeftButtonDown"
+                               MouseEnter="label6_MouseMove"
+                               MouseLeave="label6_MouseLeave"
+                               Content="Settings"
+                               FontSize="20"
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/settings.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label7"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label7_MouseMove"
+                               MouseLeave="label7_MouseLeave"
+                               MouseLeftButtonDown="label7_MouseLeftButtonDown" 
+                               Content="About" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/more.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label8"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label8_MouseMove"
+                               MouseLeave="label8_MouseLeave"
+                               MouseLeftButtonDown="Label8_MouseLeftButtonDown"
+                               Content="Log out" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/log_in.png" Width="35" Height="35"/>
+                    </DockPanel>
+                </StackPanel>
+                <Border Background="#556371" >
+                    <Grid>
+
+
+                    </Grid>
+                </Border>
+
+                <Label Foreground="#F3F3F3" Content="Lifehack:" Canvas.Left="70" Width="97" FontFamily="Nautilus Pompilius" FontSize="24" Height="43"/>
+                <Label Foreground="#F3F3F3" Content="Available recipes:" Canvas.Left="498" Width="277" FontFamily="Nautilus Pompilius" FontSize="24"/>
+
+            </Canvas>
+        </DockPanel>
+        <Image MouseLeftButtonDown="Image_MouseLeftButtonDown_1" Source="/FridgyKey;component/images/icons/hide2.png" Height="25" Margin="915,0,35,575" />
+        <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="/FridgyKey;component/images/icons/cross3.png" Height="25" Width="30" Margin="942,0,0,575" />
+
+    </Grid>
+</Window>

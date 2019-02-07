@@ -1,0 +1,138 @@
+﻿<Window x:Class="FridgyKey.Windows.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FridgyKey.Windows"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="About"  StateChanged="Window_StateChanged" Style="{StaticResource TitleStyle}" WindowStartupLocation="CenterScreen" >
+    <Grid>
+
+        <DockPanel>
+            <Canvas Background="#4B4A43">
+
+                <ScrollViewer Height="519" Canvas.Left="75" Canvas.Top="50">
+                    <StackPanel Background="#FFFCF0E4" Height="840" Width="846">
+                        <DockPanel>
+                            <Image gif:ImageBehavior.AnimatedSource="/FridgyKey;component/images/test/3.gif"  Width="100 " Height="100" Margin="23,-1529,0,0"/>
+                            <Label Content="FridgyKey v1.0&#10;© Pakholko A.S., 2018. " Width="728" Margin="7,-603,0,914" FontFamily="LifeIsStrangeRU" FontSize="30" Height="85"/>
+                            <TextBox IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" Height="731" Width="811" Margin="-844,92,-11,800" FontFamily="LifeIsStrangeRU" FontSize="24"/>
+                        </DockPanel>
+                    </StackPanel>
+
+                </ScrollViewer >
+
+                <StackPanel Style="{StaticResource MenuEvent}">
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label1" 
+                               FontFamily="Nautilus Pompilius"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="Label1_MouseLeftButtonDown" 
+                               Content="My fridge" 
+                               FontSize="30" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/home.png" Width="35" Height="35" />
+                    </DockPanel>
+                    <Separator Margin="13,2,53.6,2"></Separator>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label2"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label2_MouseLeftButtonDown"
+                               MouseEnter="label2_MouseMove" 
+                               MouseLeave="label2_MouseLeave"
+                               Content="Get recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/get_recipe.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label3"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label3_MouseLeftButtonDown" 
+                               MouseEnter="label3_MouseMove" 
+                               MouseLeave="label3_MouseLeave"
+                               Content="Add product" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/add.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label4"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label4_MouseLeftButtonDown" 
+                               MouseEnter="label4_MouseMove" 
+                               MouseLeave="label4_MouseLeave"
+                               Content="Add recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/add.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label5"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label5_MouseLeftButtonDown"
+                               MouseEnter="label5_MouseMove" 
+                               MouseLeave="label5_MouseLeave"
+                               Content="Calculate kkal" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/calculate.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label6"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label6_MouseLeftButtonDown"
+                               MouseEnter="label6_MouseMove" 
+                               MouseLeave="label6_MouseLeave"
+                               Content="Settings"
+                               FontSize="20"
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/Settings.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label7"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label7_MouseMove" 
+                               MouseLeave="label7_MouseLeave"
+                               MouseLeftButtonDown="label7_MouseLeftButtonDown" 
+                               Content="About" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/more.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label8"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label8_MouseMove" 
+                               MouseLeave="label8_MouseLeave"
+                               MouseLeftButtonDown="Label8_MouseLeftButtonDown"
+                               Content="Log out" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="/FridgyKey;component/images/icons/log_in.png" Width="35" Height="35"/>
+                    </DockPanel>
+                </StackPanel>
+
+                <Border Background="#556371" >
+                    <Grid>
+
+                    </Grid>
+                </Border>
+            </Canvas>
+        </DockPanel>
+        <Image MouseLeftButtonDown="Image_MouseLeftButtonDown_1" Source="/FridgyKey;component/images/icons/hide2.png" Height="25" Margin="915,0,35,575" />
+
+        <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="/FridgyKey;component/images/icons/cross3.png" Height="25" Width="30" Margin="942,0,0,575" />
+
+    </Grid>
+</Window>
