@@ -1,0 +1,62 @@
+﻿<Window x:Class="FridgyKey.RecipeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:FridgyKey"
+        mc:Ignorable="d"
+        
+        Title="My fridge" StateChanged="Window_StateChanged"  WindowStartupLocation="CenterScreen" Style="{StaticResource TitleStyle}">
+
+    <Grid Width="972">
+
+        <DockPanel>
+            <Canvas x:Name="canv" Background="#4B4A43">
+                <Button ToolTip="Вернуться" Click="Button_Click" Content="←"  Width="70" Height="600" Background="#B2DDDDDD" Foreground="#7F000000" FontSize="48" FontFamily="SketchFlow Print"/>
+                <Border Canvas.Left="70" Canvas.Top="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 30 0 0"/>
+                    </StackPanel>
+                </Border>
+                <Border Margin="510 10 10 10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="#556371" >
+                    <Grid>
+
+
+                    </Grid>
+                </Border>
+                <DockPanel Background="#FFFBF0E3" Width="336" Height="553" Canvas.Left="94" Canvas.Top="23">
+                    <Image x:Name="image" gif:ImageBehavior.AnimatedSource="images/test/19.gif" Width="290" Height="260" Margin="23,-290,0,0" />
+                    <ListBox x:Name="list_ingr" Width="311" Margin="-311,266,0,56.8" Background="#FFFBF0E3" BorderBrush="#00ABADB3" FontSize="16" FontFamily="Segoe Script" Foreground="#FF2B2B2B"/>
+
+                </DockPanel>
+
+                <Border Background="#FFDFC3C3" Height="553" Width="494" Canvas.Left="455" Canvas.Top="23">
+                    <TextBox Text="" x:Name="text" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True" Width="451" Background="#FFE2CDD3" Margin="22,20" Foreground="#FF2B2B2B" FontSize="22" FontFamily="Segoe Print" VerticalContentAlignment="Center"/>
+                </Border>
+            </Canvas>
+        </DockPanel>
+        <Image x:Name="not" Source="images/icons/chat.png" Margin="898,25,28,538"/>
+        <Image ToolTip="Инструкции" MouseLeftButtonDown="Quest" Source="images/icons/quest.png" Margin="944,0,0,575" />
+        <DockPanel Margin="94,538,542,24">
+            <DockPanel.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFE7BF75" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </RadialGradientBrush>
+            </DockPanel.Background>
+            <Button Click="Button_Click_1" ToolTip="Добавить недостающие ингредиенты в корзину">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/icons/buy.png" Stretch="None"/>
+                </Button.Background>
+            </Button>
+        </DockPanel>
+
+    </Grid>
+</Window>

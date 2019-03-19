@@ -6,17 +6,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FridgyKey 
+namespace FridgyKey
 {
     public static class Sticker
     {
+        public static DataTable tbl;
+        public static int count;
+
+        public static string query_insert = "insert into [tblSticker] ([userID], [text], [frostID]) values (@username,@text,@frostid);";
+        public static string query_delete = "delete from [tblSticker] where [frostID]=@frostid;";
         static public List<string> username;
         static public List<string> text;
 
-        static string query_insert = "insert into [tblSticker] ([user], [text], [frostID]) values (@username,@text,@frostid);";
-        static public int Get_count()
+        static public void Delete_Story() //готово
         {
-            SqlConnection sqlCon = clsDB.Get_DB_Connection();
+            try
+            {
+                var sql_con = clsDB.sqlCon;
+                SqlCommand cmd2 = new SqlCommand(query_delete, sql_con); 
+                cmd2.Parameters.AddWithValue("@frostid", User.FrostID); 
+                cmd2.ExecuteNonQuery();
+                tbl = clsDB.Get_DataTable("select * from [tblSticker];");
+                SqlCommand sqlCmd5 = new SqlCommand("select count(1) from [tblSticker]", clsDB.sqlCon);
+                count = Convert.ToInt32(sqlCmd5.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //clsDB.Close_DB_Connection();
+            }
+        }
+
+            static public int Get_count()  //готово
+        {
+            SqlConnection sqlCon = clsDB.sqlCon;
             try
             {
                 DataTable dt2 = clsDB.Get_DataTable("select count(*) from tblSticker where frostID=" + User.FrostID + ";");
@@ -30,17 +56,27 @@ namespace FridgyKey
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+               // clsDB.Close_DB_Connection();
             }
         }
-        static public string Get_message(int i)
+        static public List<string> Get_message() //готово
         {
-            SqlConnection sqlCon = clsDB.Get_DB_Connection();
+            List<string> ls = new List<string>();
             try
             {
-                DataTable dt = clsDB.Get_DataTable("select * from [tblSticker] where [frostID]=" + User.FrostID + ";");
-                string s = (string)dt.Rows[i]["user"] + ": " + (string)dt.Rows[i]["text"];
-                return s;
+                int countt = count;
+                for (int j = 0; j < countt; j++)
+                {
+                    if ((int)(tbl.Rows[j]["frostID"]) == User.FrostID)
+                    {
+                        ls.Add(User.Get_name_by_id((int)tbl.Rows[j]["userID"]) + ": " + (string)tbl.Rows[j]["text"]);
+                    }
+                }
+                return ls;
+
+                //DataTable dt = clsDB.Get_DataTable("select * from [tblSticker] where [frostID]="+User.FrostID+";"); 
+                //string s = User.Get_name_by_id((int)dt.Rows[i]["userID"]) +": " + (string)dt.Rows[i]["text"];
+                //return s;
             }
             catch (Exception ex)
             {
@@ -49,19 +85,21 @@ namespace FridgyKey
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+               // clsDB.Close_DB_Connection();
             }
         }
-        static public void Set_message(string text)
-        { 
+        static public void Set_message(string text) //готово
+        {
             try
             {
-                SqlConnection cn_connection = clsDB.Get_DB_Connection(); 
-                SqlCommand cmd_Command = new SqlCommand(query_insert, cn_connection);
-                cmd_Command.Parameters.AddWithValue("@username", User.Username);
-                cmd_Command.Parameters.AddWithValue("@text", text);
-                cmd_Command.Parameters.AddWithValue("@frostid", User.FrostID);
-                cmd_Command.ExecuteNonQuery(); 
+                var sql_con = clsDB.sqlCon;
+                SqlCommand cmd2 = new SqlCommand(query_insert, sql_con);
+                cmd2.Parameters.AddWithValue("@username", User.Get_id_by_name(User.Username));
+                cmd2.Parameters.AddWithValue("@frostid", User.FrostID);
+                cmd2.Parameters.AddWithValue("@text", text); 
+                cmd2.ExecuteNonQuery();
+                tbl = clsDB.Get_DataTable("select * from [tblSticker];");
+                count++;
             }
             catch (Exception ex)
             {
@@ -69,7 +107,7 @@ namespace FridgyKey
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+                //clsDB.Close_DB_Connection();
             }
         }
     }

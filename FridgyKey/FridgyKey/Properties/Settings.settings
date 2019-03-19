@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="connection_str" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="D:\Универ\4 сем\KP\Pakholko_A_S\FridgyKey\FridgyKey\db_local.mdf";Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="D:\Универ\4 сем\KP\Repos_OOP\FridgyKey\FridgyKey\DB\my_db.mdf";Integrated Security=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,0 +1,198 @@
+﻿<Window x:Class="FridgyKey.ShoppingBasket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:FridgyKey"
+        mc:Ignorable="d"
+        Title="My fridge" StateChanged="Window_StateChanged"  WindowStartupLocation="CenterScreen" Style="{StaticResource TitleStyle}">
+
+    <Grid Width="972">
+
+        <DockPanel>
+            <Canvas x:Name="canv" Background="#4B4A43">
+                <Border BorderThickness="0" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="52"/>
+                <Border Background="#D8CE8A8A" Height="488" Width="443" Canvas.Left="71" Canvas.Top="90">
+                    <ListBox SelectionChanged="list_products_SelectionChanged" ToolTip="Нажмите, чтобы изменить" x:Name="list_products" Margin="10,10,10.2,10" Background="#F3F3F3" FontSize="24" FontFamily="LifeIsStrangeRU" Foreground="#7F696565"/>
+                </Border>
+                <StackPanel Style="{StaticResource MenuEvent}">
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label1" 
+                               FontFamily="Nautilus Pompilius"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="Label1_MouseLeftButtonDown" 
+                               Content="My fridge" 
+                               FontSize="30" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/home.png" Width="35" Height="35" />
+                    </DockPanel>
+                    <Separator Margin="13,2,53.6,2"></Separator>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label2"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label2_MouseLeftButtonDown"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
+                               Content="Get recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/get_recipe.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label3"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label3_MouseLeftButtonDown" 
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
+                               Content="Add product" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/add.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label4"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label4_MouseLeftButtonDown" 
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
+                               Content="Add recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/add.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label5"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label5_MouseLeftButtonDown"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
+                               Content="Calculate kkal" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/calculate.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label7" 
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="label7_MouseLeftButtonDown" 
+                               Content="Search recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/more.png" Width="30" Height="30"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label17" 
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="label17_MouseLeftButtonDown" 
+                               Content="My basket" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937" Margin="-4,0,0,0"/>
+                        <Image Source="images/icons/buy.png" Width="37" Height="34"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label6"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseLeftButtonDown="label6_MouseLeftButtonDown"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
+                               Content="Settings"
+                               FontSize="20"
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/settings.png" Width="35" Height="35"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label8"   
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="Label8_MouseLeftButtonDown"
+                               Content="Log out" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/log_in.png" Width="35" Height="35"/>
+                    </DockPanel>
+                </StackPanel>
+
+                <Border Background="#556371" >
+                    <Grid>
+
+
+                    </Grid>
+                </Border>
+                <Label Foreground="#F3F3F3" Content="Your Shopping Basket  . . ." Canvas.Left="70" Canvas.Top="33" Width="409" FontFamily="Nautilus Pompilius" FontSize="36" Height="57"/>
+                <Image Source="images/icons/shop2(2).png" Height="52" Width="60" Canvas.Left="454" Canvas.Top="31" />
+                <StackPanel Background="#FFFEECE7" Height="167" Canvas.Left="533" Canvas.Top="44" Margin="0,45,0,0">
+                    <DockPanel Background="#FFFEECE7" Width="419" Height="61" Canvas.Left="532" Canvas.Top="45" Margin="0,2,0,0">
+                        <Label Content="Add:" Foreground="#FF474747" Width="56" FontSize="22" Margin="18,11,0,9.8" FontFamily="SketchFlow Print" />
+                        <ComboBox Name="combo_product" Background="#C0C0C0" IsEditable="true" Margin="-13,11,0,9.8" Width="314"/>
+                    </DockPanel>
+                    <DockPanel Background="#FFFEECE7" Width="419" Height="69" Canvas.Left="532" Canvas.Top="45">
+                        <Label Content="Amount:" Foreground="#FF474747" Width="115" FontSize="22" Margin="18,9,0,9.8" FontFamily="SketchFlow Print" />
+                        <TextBox FontSize="24" Name="txt_amount" Margin="-20,11,0,22.8" Width="81"/>
+                        <Label Content="e.i.:" Foreground="#FF474747" Width="62" FontSize="22" Margin="18,9,0,9.8" FontFamily="SketchFlow Print" />
+                        <TextBox FontSize="24" Name="txt_ei" Margin="-31,11,0,22.8" Width="131"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <DockPanel.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FFF4BFBF" Offset="1"/>
+                                <GradientStop Color="#FFFFFFF4"/>
+                            </RadialGradientBrush>
+                        </DockPanel.Background>
+                        <Button Height="35" Width="420" Click="Button_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="images/icons/buy.png" Stretch="None"/>
+                            </Button.Background>
+                        </Button>
+
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel Height="231" Canvas.Top="347" Canvas.Left="536" Width="419" Background="#FFFEECE7" Margin="-2,-70,0,0">
+                    <StackPanel Background="#FFFEECE7" Width="176" Height="159" Canvas.Left="532" Canvas.Top="45" Margin="182,52,0,0">
+                        <Label Content="Select item for&#10;     delete" Foreground="#FF474747" Width="178" FontSize="22" Margin="0,11,0,5" FontFamily="SketchFlow Print" />
+
+                        <DockPanel Height="33">
+                            <DockPanel.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#FFFD6A6A" Offset="1"/>
+                                    <GradientStop Color="White"/>
+                                </RadialGradientBrush>
+                            </DockPanel.Background>
+                            <Button Click="Button_Click_1">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="images/icons/unbuy.png" Stretch="None"/>
+                                </Button.Background>
+                            </Button>
+                        </DockPanel>
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Canvas>
+        </DockPanel>
+        <Image ToolTip="Свернуть в трей" MouseLeftButtonDown="Image_MouseLeftButtonDown_1" Source="images/icons/hide2.png" Height="25" Margin="922,0,28,575" />
+
+        <Image ToolTip="Закрыть" MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="images/icons/cross3.png" Height="25" Width="25" Margin="942,0,0,575" />
+        <Image ToolTip="О программе" MouseLeftButtonDown="About_p" Source="images/icons/about.png" Height="25" Margin="895,0,55,575" />
+        <Image ToolTip="Инструкции" MouseLeftButtonDown="Quest" Source="images/icons/quest.png" Margin="864,0,82,569" Height="31" Width="26" />
+
+
+        <Image gif:ImageBehavior.AnimatedSource="images/test/15.gif" Margin="537,281,227,93" />
+
+    </Grid>
+</Window>

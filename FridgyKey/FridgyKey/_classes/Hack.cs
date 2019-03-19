@@ -6,19 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FridgyKey 
+namespace FridgyKey
 {
     public static class Hack
-    {
+    { 
         public static int count;
-        public static string Get_Hack(int i)
+        public static string Get_Hack(int i) //готово
         {
-            SqlConnection sqlCon = clsDB.Get_DB_Connection();
+            SqlConnection sqlCon = clsDB.sqlCon; 
             try
-            {
+            { 
                 DataTable dt = clsDB.Get_DataTable("select * from tblHack;");
                 DataTable dt2 = clsDB.Get_DataTable("select count(*) from tblHack;");
-                count = (int)dt2.Rows[0][0];
+                count = (int)dt2.Rows[0][0]; 
                 return (string)dt.Rows[i]["text"];
             }
             catch (Exception ex)
@@ -28,7 +28,7 @@ namespace FridgyKey
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+               // clsDB.Close_DB_Connection();
             }
         }
     }

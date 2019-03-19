@@ -5,99 +5,218 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
-namespace FridgyKey 
+namespace FridgyKey
 {
-    public static class FridgeProduct
+    public class FridgeProduct
     {
-        public static string productID;
-        public static int amount;
-        public static string ei;
+        public static DataTable tbl;
+        public static int count;
 
-        static string query_insert = "insert into [tblFrost] ([frostID], [productID], [amount], [ei], [valid]) values (@frostid,@name,@amount,@ei,@valid);";
-        static public int Get_count()
+        public string product;
+        public int amount;
+        public string ei;
+        public DateTime val;
+        public static string query_insert = "insert into [tblFrost] ([frostID], [productID], [amount], [ei], [valid]) values (@frost,@name,@amount,@ei,@valid);";
+        public static string query_update = "update [tblFrost] set [amount]=@amount where [frostID]=@frost and [productID]=@name and [ei]=@ei;"; // and [valid]=@valid
+        public static string query_delete = "delete from [tblFrost] where [amount]=@amount and [frostID]=@frost and [productID]=@name and [ei]=@ei;"; // and [valid]=@valid
+        public FridgeProduct(string prod, int am, string e, DateTime dt)
         {
-            SqlConnection sqlCon = clsDB.Get_DB_Connection();
-            try
-            {
-                DataTable dt2 = clsDB.Get_DataTable("select count(*) from [tblFrost] where [frostID]=" + User.FrostID + ";");
-                int count = (int)dt2.Rows[0][0];
-                return count;
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(ex.Message);
-                return 0;
-            }
-            finally
-            {
-                clsDB.Close_DB_Connection();
-            }
+            product = prod;
+            amount = am;
+            ei = e;
+            val = dt;
         }
 
-        static public string Get_product(int i)
+        override public string ToString() //готово
         {
-            SqlConnection sqlCon = clsDB.Get_DB_Connection();
+            SqlConnection sqlCon = clsDB.sqlCon;
             try
             {
-                DataTable dt = clsDB.Get_DataTable("select * from [tblFrost] where [frostID]=" + User.FrostID + ";");
-                DataTable dtf = clsDB.Get_DataTable("select * from [tblKkal] where [id]=" + (int)dt.Rows[i]["productID"] + ";");
-
                 string add = "";
-                if ((DateTime)dt.Rows[i]["valid"] <= DateTime.Now) { add = "!!! "; }
-                string s = add + (string)dtf.Rows[0]["name"] + " (" + (int)dt.Rows[i]["amount"] + " " + (string)dt.Rows[i]["ei"] + " " + (String.Format("{0}.{1}.{2}", ((DateTime)dt.Rows[i]["valid"]).Day, ((DateTime)dt.Rows[i]["valid"]).Month, ((DateTime)dt.Rows[i]["valid"]).Year) + " )");
+                if (val <= DateTime.Now) { add = "!!! "; }
+                string s = add + product + " (" + amount + " " + ei + " " + (String.Format("{0}.{1}.{2}", val.Day, val.Month, val.Year) + " )");
                 return s;
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 return null;
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+                //clsDB.Close_DB_Connection();
             }
         }
-        static public void Set_product(int _amount, string _ei, DateTime _valid, string name)
-        { 
+
+        public static bool Is_have(int prod_id)
+        {
             try
             {
-                SqlConnection cn_connection = clsDB.Get_DB_Connection();
-                SqlCommand cmd_Command = new SqlCommand(query_insert, cn_connection);
-                cmd_Command.Parameters.AddWithValue("@name", Get_id(name));
-                cmd_Command.Parameters.AddWithValue("@amount", amount);
-                cmd_Command.Parameters.AddWithValue("@frostid", User.FrostID);
-                cmd_Command.Parameters.AddWithValue("@ei", _ei);
-                cmd_Command.Parameters.AddWithValue("@valid", _valid);
-                cmd_Command.ExecuteNonQuery();
+                bool f = false;
+                for (int j = 0; j < count; j++)
+                {
+                    if ((int)tbl.Rows[j]["frostID"] == User.FrostID)
+                    {
+                        if ((int)tbl.Rows[j][2]==prod_id)
+                        {
+                            f = true;
+                            break;
+                        }
+                    }
+                }
+                return f;
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
+                return false;
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+                // clsDB.Close_DB_Connection();
             }
         }
-        static public int Get_id(string name)
-        {
-            SqlConnection sqlCon = clsDB.Get_DB_Connection();
+
+        static public int Get_count() //готово
+        { 
             try
             {
-                //не работает с русскими символами ????
-                DataTable dt = clsDB.Get_DataTable("select * from [tblKkal] where [name]='" + name + "';");
-                int id = (int)dt.Rows[0][0];
-                return id;
+                return count;
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 return 0;
             }
             finally
             {
-                clsDB.Close_DB_Connection();
+               // clsDB.Close_DB_Connection();
+            }
+        }       
+        static public List<FridgeProduct> Get_product_by_frost_id() //готово
+        {
+            List<FridgeProduct> r = new List<FridgeProduct>();
+            SqlConnection sqlCon = clsDB.sqlCon;
+            try
+            { 
+                for (int j=0; j<count; j++)
+                {
+                    if ((int)tbl.Rows[j]["frostID"]==User.FrostID)
+                    {
+                        r.Add(new FridgeProduct(Product.Get_product_by_id((int)tbl.Rows[j]["productID"]), (int)tbl.Rows[j]["amount"], (string)tbl.Rows[j]["ei"], (DateTime)tbl.Rows[j]["valid"]));
+                    }
+                }
+                return r; 
+
+                //FridgeProduct r = new FridgeProduct();
+                //DataTable dt = clsDB.Get_DataTable("select * from [tblFrost] where [frostID]=" + User.FrostID + ";");
+                //DataTable dtf = clsDB.Get_DataTable("select * from [tblKkal] where [id]=" + (int)dt.Rows[i]["productID"] + ";");
+
+                //r.val = (DateTime)dt.Rows[i]["valid"];
+                //r.product = (string)dtf.Rows[0]["name"];
+                //r.amount = (int)dt.Rows[i]["amount"];
+                //r.ei = (string)dt.Rows[i]["ei"];
+                //return r;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+               // clsDB.Close_DB_Connection();
+            }
+        }
+        static public void Set_product(int _amount, string _ei, DateTime _valid, string name) //готово
+        {
+            try
+            {
+                var sql_con = clsDB.sqlCon;
+                SqlCommand cmd2 = new SqlCommand(query_insert, sql_con);
+                cmd2.Parameters.AddWithValue("@name", Get_id_by_name(name));
+                int i = User.FrostID;
+                cmd2.Parameters.AddWithValue("@frost", i);
+                cmd2.Parameters.AddWithValue("@amount", _amount);
+                cmd2.Parameters.AddWithValue("@ei", _ei);
+                cmd2.Parameters.AddWithValue("@valid", _valid);
+                cmd2.ExecuteNonQuery();
+                tbl = clsDB.Get_DataTable("select * from [tblFrost];");
+                count++;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //clsDB.Close_DB_Connection();
+            }
+        } 
+        static public int Get_id_by_name(string name) //готово
+        {
+            try
+            {
+                return Product.Get_id_by_name(name);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+            finally
+            {
+                //clsDB.Close_DB_Connection();
+            }
+        }
+        static public void Update_product(FridgeProduct f, int delta) 
+        {
+            try
+            {
+                int _amount = f.amount + delta;
+                var sql_con = clsDB.sqlCon;
+                SqlCommand cmd2 = new SqlCommand(query_update, sql_con);
+                cmd2.Parameters.AddWithValue("@name", Get_id_by_name(f.product));
+                int i = User.FrostID;
+                cmd2.Parameters.AddWithValue("@frost", i);
+                cmd2.Parameters.AddWithValue("@amount", _amount);
+                cmd2.Parameters.AddWithValue("@ei", f.ei); 
+                cmd2.ExecuteNonQuery();
+                tbl = clsDB.Get_DataTable("select * from [tblFrost];");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //clsDB.Close_DB_Connection();
+            }
+        }
+        static public void Delete_product(FridgeProduct f) 
+        {
+            try
+            {
+                var sql_con = clsDB.sqlCon;
+                SqlCommand cmd2 = new SqlCommand(query_delete, sql_con);
+                cmd2.Parameters.AddWithValue("@name", Get_id_by_name(f.product));
+                int i = User.FrostID;
+                cmd2.Parameters.AddWithValue("@frost", i);
+                cmd2.Parameters.AddWithValue("@amount", f.amount);
+                cmd2.Parameters.AddWithValue("@ei", f.ei); 
+                cmd2.ExecuteNonQuery();
+                tbl = clsDB.Get_DataTable("select * from [tblFrost];");
+                count--;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+               // clsDB.Close_DB_Connection();
             }
         }
     }

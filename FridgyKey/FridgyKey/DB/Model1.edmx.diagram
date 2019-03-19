@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c947d6336874b8eae843f6525764fe1" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="my_dbModel.tblBasket" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblFrost" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblHack" Width="1.5" PointX="4.625" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblKkal" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblRecipeIn" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblRecipeMain" Width="1.5" PointX="6.875" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblSticker" Width="1.5" PointX="6.875" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="my_dbModel.tblUser" Width="1.5" PointX="4.625" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="my_dbModel.FK__tblBasket__produ__0880433F" ManuallyRouted="false" />
+        <AssociationConnector Association="my_dbModel.FK__tblFrost__produc__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="my_dbModel.FK__tblRecipe__produ__7EF6D905" ManuallyRouted="false" />
+        <AssociationConnector Association="my_dbModel.FK__tblRecipe__ingre__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="my_dbModel.FK__tblSticke__userI__57DD0BE4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

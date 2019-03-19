@@ -1,0 +1,30 @@
+﻿<Window x:Class="FridgyKey.NotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:FridgyKey"
+        mc:Ignorable="d"
+        Title="Notification Popup" Width="320" SizeToContent="Height"
+  WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded" WindowStartupLocation="Manual">
+
+    <Grid Margin="0 0 0 0" RenderTransformOrigin="0,1" Style="{StaticResource NotationEvent}">
+
+        <!-- Notification area -->
+        <Border BorderThickness="1" Background="#4B4A43">
+            <StackPanel>
+                <Image ToolTip="Закрыть" MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="images/icons/cross3.png" Height="20" Width="20" Margin="297 0 0 0" />
+                <StackPanel Margin="10,-5,9.4,10" Height="128">
+                    <TextBlock Text="kisndfoubg" Name="blckBig" Foreground="PapayaWhip" TextWrapping="Wrap" Margin="81,20,4.2,5" FontFamily="AngryBirds" FontSize="20" Height="26" FontWeight="Bold"/>
+                    <TextBlock Text="kisndfoubg" Name="block" Foreground="PapayaWhip" TextWrapping="Wrap" Margin="5,15,5.2,10" FontSize="15" Height="58">
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Animation -->
+
+        <Image  gif:ImageBehavior.AnimatedSource="images/test/Pusheen.gif" Width="69" Height="46" Margin="18,21,233,88.2"/>
+    </Grid>
+</Window>

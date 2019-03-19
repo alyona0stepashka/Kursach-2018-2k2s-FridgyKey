@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FridgyKey.FridgeProduct">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACIAgAhAAABAEBAYAAAAAAACCgAgAIAAAAAAAAQA=</HashCode>
+      <FileName>_classes\FridgeProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Ingredient">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAAAAAhBAABAEBAIAAAAAAAAAgAgAAAAAAAAEAIA=</HashCode>
+      <FileName>_classes\Ingredient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Product">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAABAABAIAAIAAAAAEAAgAAAAAAQAAIQA=</HashCode>
+      <FileName>_classes\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Recipe">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="FridgyKey.Recipe.Good" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_classes\Recipe.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAJIAAACAAAAABAABAIAAAAMQAAEAAgIAQAAAAAAAYA=</HashCode>
+      <FileName>_classes\Recipe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Sticker">
+    <Position X="7.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAgBAIAAAEAAQACAAgIAAAAAAAAABA=</HashCode>
+      <FileName>_classes\Sticker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.User">
+    <Position X="5.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIACAAAAABAADQIAAAACAgAAAAgAAAAAAAAAAQA=</HashCode>
+      <FileName>_classes\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Hack">
+    <Position X="12.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>_classes\Hack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Resource">
+    <Position X="9" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>_classes\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.clsDB">
+    <Position X="10.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAICAAAABAAAAAAAAAAAAAAAgAABABAAAAA=</HashCode>
+      <FileName>_classes\clsDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.BGBuilder">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAAAAAAAAAAAAAAAAAAAAQAAEAAAAIAAAA=</HashCode>
+      <FileName>_classes\BGBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.BG">
+    <Position X="11.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAgAAgAAAAAAAAACAAAAAAAAAAAAAAABEAACAAA=</HashCode>
+      <FileName>_classes\BGBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.StandartBuilder">
+    <Position X="18.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAAAAIAAAAAAAAAAAAAAAQAAEAAAAIAAAA=</HashCode>
+      <FileName>_classes\BGBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.ColorBuilder">
+    <Position X="14" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAAAAIAAAAAAAAAAAAAAAQAAEAAAAIAAAA=</HashCode>
+      <FileName>_classes\BGBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.ImageBuilder">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAAAAIAAAAAAAAAAAAAAAQAAEAAAAIAAAA=</HashCode>
+      <FileName>_classes\BGBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FridgyKey.Basket">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAgAhAAABAEBAYAAAAAAACCgAgAIAAAAAAAAQA=</HashCode>
+      <FileName>_classes\Basket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

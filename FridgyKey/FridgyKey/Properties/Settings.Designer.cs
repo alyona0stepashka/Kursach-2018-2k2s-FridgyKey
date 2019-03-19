@@ -25,8 +25,8 @@ namespace FridgyKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Универ\\4 сем\\KP\\Pakholko_" +
-            "A_S\\FridgyKey\\FridgyKey\\db_local.mdf\";Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Универ\\4 сем\\KP\\Repos_OOP" +
+            "\\FridgyKey\\FridgyKey\\DB\\my_db.mdf\";Integrated Security=True")]
         public string connection_str {
             get {
                 return ((string)(this["connection_str"]));

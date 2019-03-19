@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B966A669-CBCC-4A09-9832-F8974AFD06D6}</ProjectGuid>
+    <ProjectGuid>{6CFDB209-D3F8-4DC7-83E0-BFC47B684C81}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FridgyKey</RootNamespace>
     <AssemblyName>FridgyKey</AssemblyName>
@@ -13,6 +13,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,8 +26,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -52,13 +53,48 @@
     <ApplicationIcon>Pusheen_Love.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.1\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.6\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Data.Services.Design" />
+    <Reference Include="System.Data.SqlXml" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Dynamic" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
-    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
-    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,40 +116,131 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\About.xaml.cs">
+    <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AddProduct.xaml.cs">
+    <Compile Include="AboutBtn.xaml.cs">
+      <DependentUpon>AboutBtn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AddRecipe.xaml.cs">
+    <Compile Include="AddRecipe.xaml.cs">
       <DependentUpon>AddRecipe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Calculate.xaml.cs">
+    <Compile Include="Calculate.xaml.cs">
       <DependentUpon>Calculate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\GetRecipe.xaml.cs">
+    <Compile Include="DB\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblBasket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblFrost.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblHack.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblKkal.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblRecipeIn.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblRecipeMain.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblSticker.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog.xaml.cs">
+      <DependentUpon>Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingBasket.xaml.cs">
+      <DependentUpon>ShoppingBasket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationWindow.xaml.cs">
+      <DependentUpon>NotificationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Quest.xaml.cs">
+      <DependentUpon>Quest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_classes\BGBuilder.cs" />
+    <Compile Include="_classes\Basket.cs" />
+    <Compile Include="_classes\FridgeProduct.cs" />
+    <Compile Include="GetRecipe.xaml.cs">
       <DependentUpon>GetRecipe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\RecipeView.xaml.cs">
-      <DependentUpon>RecipeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Register.xaml.cs">
-      <DependentUpon>Register.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_classes\clsDB.cs" />
-    <Compile Include="_classes\FridgeProduct.cs" />
     <Compile Include="_classes\Hack.cs" />
+    <Compile Include="_classes\Ingredient.cs" />
+    <Compile Include="_classes\clsDB.cs" />
     <Compile Include="_classes\Product.cs" />
     <Compile Include="_classes\Recipe.cs" />
+    <Compile Include="RecipeView.xaml.cs">
+      <DependentUpon>RecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_classes\Resource.cs" />
     <Compile Include="_classes\Sticker.cs" />
     <Compile Include="_classes\User.cs" />
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AboutBtn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShoppingBasket.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,49 +249,36 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles\Menu.xaml">
+    <Page Include="NotificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\About.xaml">
+    <Page Include="Quest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddProduct.xaml">
+    <Page Include="RecipeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddRecipe.xaml">
+    <Page Include="Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Calculate.xaml">
+    <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\GetRecipe.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Login.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\RecipeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Register.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -185,24 +299,69 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DB\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="Debug\FridgyKey.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="_classes\ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="db_local.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="db_local_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>db_local.mdf</DependentUpon>
-    </Content>
-    <Resource Include="Pusheen_Love.ico" />
+    <Resource Include="images\icons\shop2%282%29.png" />
+    <Resource Include="images\icons\buy.png" />
+    <Resource Include="images\icons\shop.png" />
+    <Resource Include="images\icons\unbuy.png" />
+    <Resource Include="images\icons\scroll.png" />
+    <Resource Include="images\quest\7.PNG" />
+    <Resource Include="images\quest\8.PNG" />
+    <Resource Include="images\quest\1.PNG" />
+    <Resource Include="images\quest\2.PNG" />
+    <Resource Include="images\quest\31.PNG" />
+    <Resource Include="images\quest\32.PNG" />
+    <Resource Include="images\quest\4.PNG" />
+    <Resource Include="images\quest\5.PNG" />
+    <Resource Include="images\quest\6.PNG" />
+    <Resource Include="images\icons\quest.png" />
+    <Resource Include="images\icons\question.png" />
+    <Resource Include="images\icons\search2.png" />
+    <Resource Include="images\icons\search1.png" />
+    <Resource Include="images\icons\search.png" />
+    <Resource Include="images\icons\about.png" />
+    <Resource Include="images\icons\email.png" />
+    <Resource Include="images\icons\insta.png" />
+    <Resource Include="images\icons\phone.png" />
+    <Resource Include="images\icons\skype.png" />
+    <Resource Include="images\icons\telegram.png" />
+    <Resource Include="images\icons\twitter.png" />
+    <Resource Include="images\icons\vk.png" />
+    <Resource Include="images\background\10.jpg" />
+    <Resource Include="images\background\11.jpeg" />
+    <Resource Include="images\background\12.jpg" />
+    <Resource Include="images\background\13.jpg" />
+    <Resource Include="images\background\19.jpg" />
+    <Resource Include="images\background\2.jpg" />
+    <Resource Include="images\background\3.jpg" />
+    <Resource Include="images\background\36.jpg" />
+    <Resource Include="images\background\5.jpg" />
+    <Resource Include="images\background\553531-1680x1050.jpg" />
+    <Resource Include="images\background\6.jpg" />
+    <Resource Include="images\background\9.jpg" />
+    <Resource Include="images\background\img.jpg" />
+    <Resource Include="images\background\JO-4TwJdBSQ.jpg" />
+    <Resource Include="images\test\25.gif" />
+    <Resource Include="images\test\251.gif" />
+    <Resource Include="images\icons\return.png" />
     <Resource Include="images\i.ico" />
     <Resource Include="images\icons\1.ico" />
     <Resource Include="images\icons\1.png" />
@@ -264,7 +423,6 @@
     <Resource Include="images\test\22.gif" />
     <Resource Include="images\test\23.gif" />
     <Resource Include="images\test\24.gif" />
-    <Resource Include="images\test\25.gif" />
     <Resource Include="images\test\3.gif" />
     <Resource Include="images\test\4.gif" />
     <Resource Include="images\test\5.gif" />
@@ -276,6 +434,59 @@
     <Resource Include="images\test\Pusheen.gif" />
     <Resource Include="images\test\Pusheen_Love.png" />
     <Resource Include="images\test\skrep49.png" />
+    <Resource Include="Pusheen_Love.ico" />
+    <Content Include="DB\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DB\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="DB\my_db.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\my_db_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>my_db.mdf</DependentUpon>
+    </Content>
+    <Content Include="Debug\FridgyKey.exe" />
+    <Content Include="Debug\FridgyKey.pdb" />
+    <Resource Include="Debug\images\recipe\1.png" />
+    <Resource Include="Debug\images\Colors.PNG" />
+    <Resource Include="Debug\images\icons\add.png" />
+    <Resource Include="Debug\images\icons\calculate.png" />
+    <Resource Include="Debug\images\icons\chat.png" />
+    <Resource Include="Debug\images\icons\cross.png" />
+    <Resource Include="Debug\images\icons\cross2.png" />
+    <Resource Include="Debug\images\icons\cross3.png" />
+    <Resource Include="Debug\images\icons\get_recipe.png" />
+    <Resource Include="Debug\images\icons\hide.png" />
+    <Resource Include="Debug\images\icons\hide2.png" />
+    <Resource Include="Debug\images\icons\home.png" />
+    <Resource Include="Debug\images\icons\icon.ico" />
+    <Resource Include="Debug\images\icons\icon.png" />
+    <Resource Include="Debug\images\icons\icon_64.png" />
+    <Resource Include="Debug\images\icons\log_in.png" />
+    <Resource Include="Debug\images\icons\log_out.png" />
+    <Resource Include="Debug\images\icons\more.png" />
+    <Resource Include="Debug\images\icons\refresh.png" />
+    <Resource Include="Debug\images\icons\settings.png" />
+    <Resource Include="Debug\images\icons\settings2.png" />
+    <Resource Include="Debug\images\icons\wcross3.png" />
+    <Resource Include="docs\MySqlTransaction.xml" />
+    <Resource Include="docs\MySqlParameterCollection.xml" />
+    <Resource Include="docs\MySqlParameter.xml" />
+    <Resource Include="docs\MySqlHelper.xml" />
+    <Resource Include="docs\MySqlException.xml" />
+    <Resource Include="docs\MySqlDataReader.xml" />
+    <Resource Include="docs\MySqlDataAdapter.xml" />
+    <Resource Include="docs\MySqlConnectionStringBuilder.xml" />
+    <Resource Include="docs\MySqlConnection.xml" />
+    <Resource Include="docs\MySqlCommandBuilder.xml" />
+    <Resource Include="docs\MySqlCommand.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -289,6 +500,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

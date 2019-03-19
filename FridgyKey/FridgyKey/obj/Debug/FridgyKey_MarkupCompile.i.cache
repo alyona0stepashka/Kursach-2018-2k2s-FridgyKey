@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Универ\4 сем\KP\Pakholko_A_S\FridgyKey\FridgyKey\obj\Debug\
+D:\Универ\4 сем\KP\Repos_OOP\FridgyKey\FridgyKey\obj\Debug\
 FridgyKey
 none
 false
 DEBUG;TRACE
-D:\Универ\4 сем\KP\Pakholko_A_S\FridgyKey\FridgyKey\App.xaml
-11631214023
-2-625601970
-251978448407
-19118969888
-MainWindow.xaml;Styles\Menu.xaml;Windows\About.xaml;Windows\AddProduct.xaml;Windows\AddRecipe.xaml;Windows\Calculate.xaml;Windows\GetRecipe.xaml;Windows\Login.xaml;Windows\RecipeView.xaml;Windows\Register.xaml;Windows\Settings.xaml;
+D:\Универ\4 сем\KP\Repos_OOP\FridgyKey\FridgyKey\App.xaml
+16-51411652
+6662799677
+45-1792946843
+92-1544841713
+About.xaml;AboutBtn.xaml;AddProduct.xaml;AddRecipe.xaml;Calculate.xaml;Dialog.xaml;GetRecipe.xaml;Login.xaml;ShoppingBasket.xaml;MainWindow.xaml;NotificationWindow.xaml;Quest.xaml;RecipeView.xaml;Register.xaml;Settings.xaml;Styles\Styles.xaml;
 
 False
 

@@ -8,7 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db_local.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db_local_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/model1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/model1.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/my_db.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/my_db_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("debug/fridgykey.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("debug/fridgykey.pdb")]
 
 

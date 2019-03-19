@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище my_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBasket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="frostID" Type="int" />
+          <Property Name="productID" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="ei" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblFrost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="frostID" Type="int" />
+          <Property Name="productID" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="ei" Type="nvarchar" MaxLength="20" />
+          <Property Name="valid" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblHack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblKkal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="kkal" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRecipeIn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productID" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="ei" Type="nvarchar" MaxLength="50" />
+          <Property Name="kolvo" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRecipeMain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="text" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ingredID" Type="int" />
+          <Property Name="notation" Type="nvarchar" MaxLength="500" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="tblSticker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" />
+          <Property Name="text" Type="nvarchar" MaxLength="100" />
+          <Property Name="frostID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" />
+          <Property Name="password" Type="nvarchar" MaxLength="500" />
+          <Property Name="frostID" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblBasket__produ__0880433F">
+          <End Role="tblKkal" Type="Self.tblKkal" Multiplicity="0..1" />
+          <End Role="tblBasket" Type="Self.tblBasket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKkal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBasket">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblFrost__produc__6CD828CA">
+          <End Role="tblKkal" Type="Self.tblKkal" Multiplicity="0..1" />
+          <End Role="tblFrost" Type="Self.tblFrost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKkal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblFrost">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecipe__ingre__7FEAFD3E">
+          <End Role="tblRecipeIn" Type="Self.tblRecipeIn" Multiplicity="0..1" />
+          <End Role="tblRecipeMain" Type="Self.tblRecipeMain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecipeIn">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRecipeMain">
+              <PropertyRef Name="ingredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecipe__produ__7EF6D905">
+          <End Role="tblKkal" Type="Self.tblKkal" Multiplicity="0..1" />
+          <End Role="tblRecipeIn" Type="Self.tblRecipeIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKkal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRecipeIn">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSticke__userI__57DD0BE4">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblSticker" Type="Self.tblSticker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSticker">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище my_dbModelContainer">
+          <EntitySet Name="tblBasket" EntityType="Self.tblBasket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFrost" EntityType="Self.tblFrost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHack" EntityType="Self.tblHack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKkal" EntityType="Self.tblKkal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRecipeIn" EntityType="Self.tblRecipeIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRecipeMain" EntityType="Self.tblRecipeMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSticker" EntityType="Self.tblSticker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblBasket__produ__0880433F" Association="Self.FK__tblBasket__produ__0880433F">
+            <End Role="tblKkal" EntitySet="tblKkal" />
+            <End Role="tblBasket" EntitySet="tblBasket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblFrost__produc__6CD828CA" Association="Self.FK__tblFrost__produc__6CD828CA">
+            <End Role="tblKkal" EntitySet="tblKkal" />
+            <End Role="tblFrost" EntitySet="tblFrost" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecipe__ingre__7FEAFD3E" Association="Self.FK__tblRecipe__ingre__7FEAFD3E">
+            <End Role="tblRecipeIn" EntitySet="tblRecipeIn" />
+            <End Role="tblRecipeMain" EntitySet="tblRecipeMain" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecipe__produ__7EF6D905" Association="Self.FK__tblRecipe__produ__7EF6D905">
+            <End Role="tblKkal" EntitySet="tblKkal" />
+            <End Role="tblRecipeIn" EntitySet="tblRecipeIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSticke__userI__57DD0BE4" Association="Self.FK__tblSticke__userI__57DD0BE4">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblSticker" EntitySet="tblSticker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="my_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblBasket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="frostID" Type="Int32" />
+          <Property Name="productID" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="ei" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblKkal" Relationship="Self.FK__tblBasket__produ__0880433F" FromRole="tblBasket" ToRole="tblKkal" />
+        </EntityType>
+        <EntityType Name="tblFrost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="frostID" Type="Int32" />
+          <Property Name="productID" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="ei" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="valid" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblKkal" Relationship="Self.FK__tblFrost__produc__6CD828CA" FromRole="tblFrost" ToRole="tblKkal" />
+        </EntityType>
+        <EntityType Name="tblHack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblKkal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kkal" Type="Int32" />
+          <NavigationProperty Name="tblBasket" Relationship="Self.FK__tblBasket__produ__0880433F" FromRole="tblKkal" ToRole="tblBasket" />
+          <NavigationProperty Name="tblFrost" Relationship="Self.FK__tblFrost__produc__6CD828CA" FromRole="tblKkal" ToRole="tblFrost" />
+          <NavigationProperty Name="tblRecipeIn" Relationship="Self.FK__tblRecipe__produ__7EF6D905" FromRole="tblKkal" ToRole="tblRecipeIn" />
+        </EntityType>
+        <EntityType Name="tblRecipeIn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productID" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="ei" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kolvo" Type="Int32" />
+          <NavigationProperty Name="tblKkal" Relationship="Self.FK__tblRecipe__produ__7EF6D905" FromRole="tblRecipeIn" ToRole="tblKkal" />
+          <NavigationProperty Name="tblRecipeMain" Relationship="Self.FK__tblRecipe__ingre__7FEAFD3E" FromRole="tblRecipeIn" ToRole="tblRecipeMain" />
+        </EntityType>
+        <EntityType Name="tblRecipeMain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ingredID" Type="Int32" />
+          <Property Name="notation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tblRecipeIn" Relationship="Self.FK__tblRecipe__ingre__7FEAFD3E" FromRole="tblRecipeMain" ToRole="tblRecipeIn" />
+        </EntityType>
+        <EntityType Name="tblSticker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="text" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="frostID" Type="Int32" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK__tblSticke__userI__57DD0BE4" FromRole="tblSticker" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="frostID" Type="Int32" />
+          <NavigationProperty Name="tblSticker" Relationship="Self.FK__tblSticke__userI__57DD0BE4" FromRole="tblUser" ToRole="tblSticker" />
+        </EntityType>
+        <Association Name="FK__tblBasket__produ__0880433F">
+          <End Role="tblKkal" Type="Self.tblKkal" Multiplicity="0..1" />
+          <End Role="tblBasket" Type="Self.tblBasket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKkal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBasket">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblFrost__produc__6CD828CA">
+          <End Role="tblKkal" Type="Self.tblKkal" Multiplicity="0..1" />
+          <End Role="tblFrost" Type="Self.tblFrost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKkal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblFrost">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecipe__produ__7EF6D905">
+          <End Role="tblKkal" Type="Self.tblKkal" Multiplicity="0..1" />
+          <End Role="tblRecipeIn" Type="Self.tblRecipeIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKkal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRecipeIn">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecipe__ingre__7FEAFD3E">
+          <End Role="tblRecipeIn" Type="Self.tblRecipeIn" Multiplicity="0..1" />
+          <End Role="tblRecipeMain" Type="Self.tblRecipeMain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecipeIn">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRecipeMain">
+              <PropertyRef Name="ingredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSticke__userI__57DD0BE4">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblSticker" Type="Self.tblSticker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSticker">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="my_dbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblBasket" EntityType="Self.tblBasket" />
+          <EntitySet Name="tblFrost" EntityType="Self.tblFrost" />
+          <EntitySet Name="tblHack" EntityType="Self.tblHack" />
+          <EntitySet Name="tblKkal" EntityType="Self.tblKkal" />
+          <EntitySet Name="tblRecipeIn" EntityType="Self.tblRecipeIn" />
+          <EntitySet Name="tblRecipeMain" EntityType="Self.tblRecipeMain" />
+          <EntitySet Name="tblSticker" EntityType="Self.tblSticker" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <AssociationSet Name="FK__tblBasket__produ__0880433F" Association="Self.FK__tblBasket__produ__0880433F">
+            <End Role="tblKkal" EntitySet="tblKkal" />
+            <End Role="tblBasket" EntitySet="tblBasket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblFrost__produc__6CD828CA" Association="Self.FK__tblFrost__produc__6CD828CA">
+            <End Role="tblKkal" EntitySet="tblKkal" />
+            <End Role="tblFrost" EntitySet="tblFrost" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecipe__produ__7EF6D905" Association="Self.FK__tblRecipe__produ__7EF6D905">
+            <End Role="tblKkal" EntitySet="tblKkal" />
+            <End Role="tblRecipeIn" EntitySet="tblRecipeIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecipe__ingre__7FEAFD3E" Association="Self.FK__tblRecipe__ingre__7FEAFD3E">
+            <End Role="tblRecipeIn" EntitySet="tblRecipeIn" />
+            <End Role="tblRecipeMain" EntitySet="tblRecipeMain" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSticke__userI__57DD0BE4" Association="Self.FK__tblSticke__userI__57DD0BE4">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblSticker" EntitySet="tblSticker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище my_dbModelContainer" CdmEntityContainer="my_dbEntities1">
+          <EntitySetMapping Name="tblBasket">
+            <EntityTypeMapping TypeName="my_dbModel.tblBasket">
+              <MappingFragment StoreEntitySet="tblBasket">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="frostID" ColumnName="frostID" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ei" ColumnName="ei" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFrost">
+            <EntityTypeMapping TypeName="my_dbModel.tblFrost">
+              <MappingFragment StoreEntitySet="tblFrost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="frostID" ColumnName="frostID" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ei" ColumnName="ei" />
+                <ScalarProperty Name="valid" ColumnName="valid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHack">
+            <EntityTypeMapping TypeName="my_dbModel.tblHack">
+              <MappingFragment StoreEntitySet="tblHack">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKkal">
+            <EntityTypeMapping TypeName="my_dbModel.tblKkal">
+              <MappingFragment StoreEntitySet="tblKkal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="kkal" ColumnName="kkal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRecipeIn">
+            <EntityTypeMapping TypeName="my_dbModel.tblRecipeIn">
+              <MappingFragment StoreEntitySet="tblRecipeIn">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ei" ColumnName="ei" />
+                <ScalarProperty Name="kolvo" ColumnName="kolvo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRecipeMain">
+            <EntityTypeMapping TypeName="my_dbModel.tblRecipeMain">
+              <MappingFragment StoreEntitySet="tblRecipeMain">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="ingredID" ColumnName="ingredID" />
+                <ScalarProperty Name="notation" ColumnName="notation" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSticker">
+            <EntityTypeMapping TypeName="my_dbModel.tblSticker">
+              <MappingFragment StoreEntitySet="tblSticker">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="frostID" ColumnName="frostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="my_dbModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="frostID" ColumnName="frostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -3,15 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FridgyKey"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:FridgyKey"
         mc:Ignorable="d"
         Title="My fridge" StateChanged="Window_StateChanged"  WindowStartupLocation="CenterScreen" Style="{StaticResource TitleStyle}">
 
     <Grid Width="972">
 
         <DockPanel>
-            <Canvas Background="#4B4A43">
+            <Canvas x:Name="canv" Background="#4B4A43">
                 <Border Canvas.Left="70" Canvas.Top="10">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 30 0 0"/>
@@ -24,7 +24,7 @@
                 </Border>
                 <Border BorderThickness="0" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="52"/>
                 <Border Background="#D8CE8A8A" Height="488" Width="526" Canvas.Left="70" Canvas.Top="90">
-                    <ListBox x:Name="list_products" Margin="10" Background="#F3F3F3" FontSize="24" FontFamily="LifeIsStrangeRU" Foreground="#7F696565"/>
+                    <ListBox SelectionChanged="list_products_SelectionChanged" ToolTip="Нажмите, чтобы изменить" x:Name="list_products" Margin="10" Background="#F3F3F3" FontSize="24" FontFamily="LifeIsStrangeRU" Foreground="#7F696565"/>
                 </Border>
                 <StackPanel Style="{StaticResource MenuEvent}">
                     <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
@@ -44,8 +44,8 @@
                         <Label x:Name="label2"   
                                FontFamily="PG Isadora Cyr Pro"
                                MouseLeftButtonDown="label2_MouseLeftButtonDown"
-                               MouseEnter="label2_MouseMove" 
-                               MouseLeave="label2_MouseLeave"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
                                Content="Get recipe" 
                                FontSize="20" 
                                Width="150" 
@@ -56,8 +56,8 @@
                         <Label x:Name="label3"   
                                FontFamily="PG Isadora Cyr Pro"
                                MouseLeftButtonDown="label3_MouseLeftButtonDown" 
-                               MouseEnter="label3_MouseMove" 
-                               MouseLeave="label3_MouseLeave"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
                                Content="Add product" 
                                FontSize="20" 
                                Width="150" 
@@ -68,8 +68,8 @@
                         <Label x:Name="label4"   
                                FontFamily="PG Isadora Cyr Pro"
                                MouseLeftButtonDown="label4_MouseLeftButtonDown" 
-                               MouseEnter="label4_MouseMove" 
-                               MouseLeave="label4_MouseLeave"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
                                Content="Add recipe" 
                                FontSize="20" 
                                Width="150" 
@@ -80,8 +80,8 @@
                         <Label x:Name="label5"   
                                FontFamily="PG Isadora Cyr Pro"
                                MouseLeftButtonDown="label5_MouseLeftButtonDown"
-                               MouseEnter="label5_MouseMove" 
-                               MouseLeave="label5_MouseLeave"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
                                Content="Calculate kkal" 
                                FontSize="20" 
                                Width="150" 
@@ -89,34 +89,46 @@
                         <Image Source="images/icons/calculate.png" Width="35" Height="35"/>
                     </DockPanel>
                     <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label7" 
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="label7_MouseLeftButtonDown" 
+                               Content="Search recipe" 
+                               FontSize="20" 
+                               Width="150" 
+                               Foreground="#313937"/>
+                        <Image Source="images/icons/more.png" Width="30" Height="30"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
+                        <Label x:Name="label17" 
+                               FontFamily="PG Isadora Cyr Pro"
+                               MouseEnter="label1_MouseMove"
+                               MouseLeave="label1_MouseLeave"
+                               MouseLeftButtonDown="label17_MouseLeftButtonDown" 
+                               Content="My basket" 
+                               FontSize="20" 
+                               Width="147" 
+                               Foreground="#313937" Margin="-4,0,0,0"/>
+                        <Image Source="images/icons/buy.png" Width="35" Height="34" Margin="3,0,0,0"/>
+                    </DockPanel>
+                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
                         <Label x:Name="label6"   
                                FontFamily="PG Isadora Cyr Pro"
                                MouseLeftButtonDown="label6_MouseLeftButtonDown"
-                               MouseEnter="label6_MouseMove" 
-                               MouseLeave="label6_MouseLeave"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
                                Content="Settings"
                                FontSize="20"
                                Width="150" 
                                Foreground="#313937"/>
                         <Image Source="images/icons/settings.png" Width="35" Height="35"/>
-                    </DockPanel>
-                    <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
-                        <Label x:Name="label7"   
-                               FontFamily="PG Isadora Cyr Pro"
-                               MouseEnter="label7_MouseMove" 
-                               MouseLeave="label7_MouseLeave"
-                               MouseLeftButtonDown="label7_MouseLeftButtonDown" 
-                               Content="About" 
-                               FontSize="20" 
-                               Width="150" 
-                               Foreground="#313937"/>
-                        <Image Source="images/icons/more.png" Width="35" Height="35"/>
-                    </DockPanel>
+                    </DockPanel> 
                     <DockPanel VerticalAlignment='Center' HorizontalAlignment="Center">
                         <Label x:Name="label8"   
                                FontFamily="PG Isadora Cyr Pro"
-                               MouseEnter="label8_MouseMove" 
-                               MouseLeave="label8_MouseLeave"
+                               MouseEnter="label1_MouseMove" 
+                               MouseLeave="label1_MouseLeave"
                                MouseLeftButtonDown="Label8_MouseLeftButtonDown"
                                Content="Log out" 
                                FontSize="20" 
@@ -141,13 +153,30 @@
                 </DockPanel>
             </Canvas>
         </DockPanel>
-        <Image MouseLeftButtonDown="Image_MouseLeftButtonDown_1" Source="images/icons/hide2.png" Height="25" Margin="915,0,35,575" />
-        <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="images/icons/cross3.png" Height="25" Width="30" Margin="942,0,0,575" />
+        <Image ToolTip="Свернуть в трей" MouseLeftButtonDown="Image_MouseLeftButtonDown_1" Source="images/icons/hide2.png" Height="25" Margin="922,0,28,575" /> 
+        
+        <Image ToolTip="Закрыть" MouseLeftButtonDown="Image_MouseLeftButtonDown" Source="images/icons/cross3.png" Height="25" Width="25" Margin="942,0,0,575" />
+        <Image ToolTip="О программе" MouseLeftButtonDown="About_p" Source="images/icons/about.png" Height="25" Margin="895,0,55,575" />
+        <Image ToolTip="Инструкции" MouseLeftButtonDown="Quest" Source="images/icons/quest.png" Margin="864,0,82,569" Height="31" Width="26" />
+
 
         <Image gif:ImageBehavior.AnimatedSource="images/test/0.gif" Margin="634,345,45,28" Width="293" />
         <Label Background="#FCEFDF" Margin="732,554,157,28"/>
-        <TextBox x:Name="message" Text="Введите сообщение здесь..." VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Margin="628.8,288,63,260" FontSize="20" FontFamily="LifeIsStrangeRU" Foreground="#7F696565"/>
-        <Button Click="Button_Click" Content="+" Margin="908,288,33,260" FontFamily="Serif Medium Italic" FontSize="24" Background="#D8CE8A8A" Foreground="#FF4B4A43"/>
+        <TextBox x:Name="message" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Margin="628.8,288,63,260" FontSize="20" FontFamily="LifeIsStrangeRU" Foreground="#7F696565"/>
+        <TextBlock IsHitTestVisible="False" Text=" Введите сообщение здесь..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="629,290,0,260" FontSize="18" FontFamily="LifeIsStrangeRU" Foreground="#7F696565" Width="280" Height="52">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=message}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button ToolTip="Отправить сообщение" Click="Button_Click" Content="+" Margin="908,288,33,260" FontFamily="Serif Medium Italic" FontSize="24" Background="#D8CE8A8A" Foreground="#FF4B4A43"/>
+        <Button ToolTip="Clear story" Click="Button_Click22" Content="Clear" Margin="706,23,210,552" FontFamily="Serif Medium Italic" FontSize="24" Background="#D8CE8A8A" Foreground="#FF4B4A43"/>
 
     </Grid>
 </Window>

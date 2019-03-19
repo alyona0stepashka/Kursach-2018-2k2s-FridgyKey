@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgyKey", "FridgyKey\FridgyKey.csproj", "{B966A669-CBCC-4A09-9832-F8974AFD06D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgyKey", "FridgyKey\FridgyKey.csproj", "{6CFDB209-D3F8-4DC7-83E0-BFC47B684C81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B966A669-CBCC-4A09-9832-F8974AFD06D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B966A669-CBCC-4A09-9832-F8974AFD06D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B966A669-CBCC-4A09-9832-F8974AFD06D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B966A669-CBCC-4A09-9832-F8974AFD06D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFDB209-D3F8-4DC7-83E0-BFC47B684C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFDB209-D3F8-4DC7-83E0-BFC47B684C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFDB209-D3F8-4DC7-83E0-BFC47B684C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFDB209-D3F8-4DC7-83E0-BFC47B684C81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {59B8A2FC-DA41-4FB3-A8DF-17867F3FEC0B}
+		SolutionGuid = {3D502BB1-12BB-4AC9-86F2-8EBD3C04A145}
 	EndGlobalSection
 EndGlobal
